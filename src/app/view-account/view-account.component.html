@@ -1,0 +1,115 @@
+<div class="container-fluid main-area">
+  <div class="card login-card">
+    <div class="card-body">
+
+
+      <div class="row">
+        <h1>Retrieve Details</h1>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-4">
+          <span class="label">Account Number</span>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class="text-field" [(ngModel)]="accountNumber" placeholder="Account Number">
+          <img src="../../assets/error.png" class="cancel" (click)="clear() ">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+          <span *ngIf="invalid" style="color:red">Invalid Account Number</span>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <button class="input-button" (click)="getAccount()">
+          Create Account
+        </button>
+      </div>
+
+
+      <div *ngIf="accountAvailable" class="account-information">
+
+        <div class="row header-two">
+          <h1>Account Details</h1>
+        </div>
+
+        <br>
+
+        <div class="row field">
+          <div class="col-md-4">
+            <span class="label">Account Number</span>
+          </div>
+          <div class="col-md-8">
+            <span class="label">{{accountModel.accountNumber}}</span>
+          </div>
+        </div>
+
+        <div class="row field">
+          <div class="col-md-4">
+            <span class="label">Secondary Identification</span>
+          </div>
+          <div class="col-md-8">
+            <span class="label">{{accountModel.SecondaryIdentificaton}}</span>
+          </div>
+        </div>
+
+        <div class="row field">
+          <div class="col-md-4">
+            <span class="label">Account Name</span>
+          </div>
+          <div class="col-md-8">
+            <span class="label">{{accountModel.accountName}}</span>
+          </div>
+        </div>
+
+        <div class="row field">
+          <div class="col-md-4">
+            <span class="label">Scheme Name</span>
+          </div>
+          <div class="col-md-8">
+            <span class="label">{{accountModel.schemeName}}</span>
+          </div>
+        </div>
+
+        <div class="row field">
+          <div class="col-md-4">
+            <span class="label">Bank Name</span>
+          </div>
+          <div class="col-md-8">
+            <span class="label">{{accountModel.bankName}}</span>
+          </div>
+        </div>
+
+        <div class="row field">
+          <div class="col-md-4">
+            <span class="label">Branch Address</span>
+          </div>
+          <div class="col-md-8">
+            <span class="label">{{accountModel.branchAddress}}</span>
+          </div>
+        </div>
+
+        <div class="row field">
+          <div class="col-md-4">
+            <span class="label">NickName</span>
+          </div>
+          <div class="col-md-8">
+            <span class="label">{{accountModel.nickName}}</span>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

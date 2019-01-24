@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class CreateAccountComponent implements OnInit {
 
   banks: any = [{}];
+  account;
   message = "Please fill all fields"
 
   accountJson = {
@@ -109,8 +110,12 @@ export class CreateAccountComponent implements OnInit {
 
       let httpObject = { "method": "createAccount", "account": this.accountJson };
       this.http.post('https://57bojam407.execute-api.eu-central-1.amazonaws.com/prod/afindemo', httpObject).subscribe(data => {
+
+        this.account = JSON.parse(JSON.stringify(data));
+        console.log(data);
+
         if (data != null) {
-          this.message = "Account Successfully Created";
+          this.message = "Account Successfully Created. Your Account number : " + this.account.accountIdentification;
           console.log(data);
         } else {
           this.message = "Account Creation Failed";
@@ -120,9 +125,19 @@ export class CreateAccountComponent implements OnInit {
     }
   }
 
+  gotoView() {
+
+    this.router.navigateByUrl('/viewaccount');
+
+  }
+
 
 }
 
 export class banksResponse {
   content: {};
+}
+
+export class createAccountResponse {
+  accountIdentification: string;
 }
