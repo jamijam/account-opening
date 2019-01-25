@@ -22,21 +22,23 @@
 
         <br>
         <div class="row">
-          <p class="text-description">First, let's valiate your identity. <br> Please submit your National Identity Document and your picture.</p>
+          <p class="text-description">First, let's valiate your identity.
+            <br> Please submit your National Identity Document and your picture.</p>
         </div>
         <br>
 
         <div class="row login-row">
           <input class="input-field" type="file" (change)="onFile1Selected($event)" />
           <input class="input-field" type="file" (change)="onFile2Selected($event)" />
-          </div>
-          <div class="row login-row">
-              <p class="image-id">ID</p>
-              <p class="image-selfie">Selfie</p>
-          </div>
-          <div class="row login-row">
+        </div>
+        <div class="row login-row">
+          <p class="image-id">ID</p>
+          <p class="image-selfie">Selfie</p>
+        </div>
+        <div class="row login-row">
           <button class="input-button" (click)="verifyUser()">Verify</button> &nbsp;&nbsp;
           <img *ngIf="verified" src="../../assets/checked.png" />
+          <p *ngIf="verified" class="verified-text">Verified</p>
         </div>
 
       </div>
