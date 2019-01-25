@@ -4,6 +4,8 @@
   padding: 7px 50px;
   border: 1px solid #0084b4;
   border-radius: 100px;
+  margin-top: 1rem;
+  margin-left: 10rem;
 }
 
 .input-button:hover{
@@ -31,9 +33,32 @@
 .main-area{
   padding-left: 15rem;
   padding-right: 15rem;
-  height: 100vh;
+  height: 120vh;
 }
 
 .login-card{
   padding: 5rem;
+}
+
+.text-description{
+  font-weight: bold;
+}
+
+.steps{
+  margin-left: 34rem;
+  font-size: 1rem;
+  color: orange;
+  font-weight: bold;
+}
+
+.image-id{
+  margin-top: 0.2rem;
+  margin-left: 2.3rem;
+  font-weight: bold;
+}
+
+.image-selfie{
+  margin-top: 0.2rem;
+  margin-left: 16.6rem;
+  font-weight: bold;
 }
