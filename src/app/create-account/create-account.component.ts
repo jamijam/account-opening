@@ -115,7 +115,7 @@ export class CreateAccountComponent implements OnInit {
         console.log(data);
 
         if (data != null) {
-          this.message = "Account Successfully Created. Your Account number : " + this.account.accountIdentification;
+          this.message = "Account Successfully Created.\nYour Account number : " + this.account.accountIdentification;
           console.log(data);
         } else {
           this.message = "Account Creation Failed";
