@@ -1,95 +1,112 @@
-<div class="container-fluid main-area">
-  <div class="card login-card">
-    <div class="card-body">
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="../../assets/apix.png" class="d-inline-block align-top nav-icon apix-logo" alt="">
+    <img src="../../assets/hv.png" class="d-inline-block align-top nav-icon hyperverge-logo" alt="">
+  </a>
+</nav>
 
-      <div class="row">
-        <p class="steps">Step 2</p>
+<div class="container-fluid canvas-bg">
+  <div class="container content-bg">
+
+    <div class="page-heading">
+
+      <h1 class="title">WELCOME TO MODEL BANK</h1>
+      <h6 class="subheading">Thank you for choosing to create an account with us.</h6>
+
+      <hr>
+
+    </div>
+
+    <div class="row steps-custom">
+
+      <div class="text-center progress-circle-active">
+        <span class="span-number">01</span>
       </div>
 
-      <div class="row">
-        <h1>Enter your details to create an Account</h1>
+      <div class="div progress-tracker-active"></div>
+
+      <div class="text-center progress-circle-active">
+        <span class="span-number">02</span>
       </div>
 
-      <br>
+      <div class="div progress-tracker"></div>
 
-      <div class="row field">
-        <div class="col-md-3">
-          <span class="label">Account Name</span>
-        </div>
-        <div class="col-md-9">
-          <input class="text-field" [(ngModel)]="accountJson.accountName" type="text" placeholder="Account Name" />
-        </div>
+
+      <div class="text-center progress-circle">
+        <span class="span-number">03</span>
       </div>
 
-      <div class="row field">
-        <div class="col-md-3">
-          <span class="label">NickName</span>
-        </div>
-        <div class="col-md-9">
-          <input class="text-field" [(ngModel)]="accountJson.nickname" type="text" placeholder="NickName" />
-        </div>
-      </div>
+    </div>
 
-      <div class="row field">
-        <div class="col-md-3">
-          <span class="label">Select Bank</span>
-        </div>
-        <div class="col-md-9">
-          <select class="text-field" (change)='onOptionsSelected($event.target.value)'>
-            <option disabled>Select Bank</option>
-            <option *ngFor="let bank of banks;let i = index" value={{i}}>
-              {{bank.bankName}}
-            </option>
-          </select>
-        </div>
-      </div>
+    <div class="title">
+      <!--Step Action-->
+      <h3 class="text-description">Create Account</h3>
+      <h6>Please fill the form below</h6>
+    </div>
 
-      <div class="row field">
-        <div class="col-md-3">
-          <span class="label">Card Facility</span>
-        </div>
-        <div class="col-md-9">
-          <!-- Rounded switch -->
+    <div class="form">
+      <div class="field">
+
+        <span class="label">Account Name</span>
+        <input class="text-field form-field" [(ngModel)]="accountJson.accountName" type="text" placeholder="Account Name" />
+
+        <span class="label">NickName</span>
+        <input class="text-field form-field" [(ngModel)]="accountJson.nickname" type="text" placeholder="NickName" />
+
+        <span class="label">Select Account Scheme</span>
+        <select class="text-field form-field" (change)='onOptionsSelected($event.target.value)'>
+          <option disabled>Select Scheme</option>
+          <option *ngFor="let scheme of schemes;let i = index" value={{i}}>
+            {{scheme}}
+          </option>
+        </select>
+
+        <span class="label">Card Facility</span>
+        <br>
+        <br>
+
+        <div class="row">
           <label class="switch">
             <input type="checkbox" data-md-icheck (change)="cardFacility($event)" />
             <span class="slider round"></span>
           </label>
+
+          <div class="submit text-right">
+            <button class="input-button" (click)="getAccountvalues($event)" data-toggle="modal" data-target="#exampleModal">
+              Create Account
+            </button>
+
+            &nbsp; &nbsp; &nbsp;
+
+            <button class="input-button" (click)="gotoView()" [disabled]="!accountCreated" [ngClass]="{'disable-custom' : !accountCreated}">
+              View Account
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <button class="input-button" (click)="getAccountvalues($event)" data-toggle="modal" data-target="#exampleModal">
-          Create Account
-        </button>
-
-        &nbsp; &nbsp; &nbsp;
-
-        <button class="input-button" (click)="gotoView()">
-          View Account
-        </button>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Account Creation Status</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              {{message}}
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Account Creation Status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                {{message}}<br>
+                <span class="account-Info">{{accountInfo}}</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
+
+
       </div>
-
     </div>
-  </div>
 
+  </div>
 </div>

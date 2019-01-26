@@ -1,17 +1,105 @@
+.nav-icon{
+  height: 45px;  
+}
+
+.apix-logo{
+  padding: 4px;
+  padding-right: 1rem; 
+  margin-right: 1rem; 
+  border-right: 1px solid white;
+}
+
+.canvas-bg{
+  background-color: #222222;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.content-bg{
+  padding: 2rem;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px; 
+  font-family: 'Poppins', sans-serif;
+}
+
+.progress-circle{
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid #ddd;
+  border-radius: 1000px;
+  color: #ddd;
+  padding: 1rem;
+}
+
+.progress-circle-active{
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid #00aced;
+  border-radius: 1000px;
+  color: #00aced;
+  padding: 1rem;
+}
+
+.span-number{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.progress-tracker{
+  width: 7rem;
+  height: 0rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem; 
+  border: 2px solid #ddd;
+}
+
+.progress-tracker-active{
+  width: 7rem;
+  height: 0rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 2px solid #00aced;
+}
+
+.page-heading{
+  margin-top: 2rem;
+}
+
+.title{
+  font-weight: 600;
+}
+
+.text-description{
+  margin-top: 1rem;
+}
+
+.steps-custom{
+  margin-top: 3rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.form{
+  margin-top: 2rem; 
+}
+
+.upload{
+  float: left;
+}
+
 .input-button{
-  background-color: #0084b4;
+  background-color: #00aced;
   color: white;
   padding: 7px 50px;
-  border: 1px solid #0084b4;
+  border: 1px solid #00aced;
   border-radius: 100px;
   margin-top: 1rem;
-  margin-left: 10rem;
 }
 
 .input-button:hover{
-  border: 1px solid #0084b4;
+  border: 1px solid #00aced;
   background-color: #00000000;
-  color: #0084b4;
+  color: #00aced;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
@@ -21,45 +109,14 @@
   padding: 0;  
 }
 
-.bg-row{
-  background-color: #222222;
-}
-
-.col-md-12{
-  margin: 0;
-  padding: 0;
-}
-
-.main-area{
-  padding-left: 15rem;
-  padding-right: 15rem;
-  height: 120vh;
-}
-
-.login-card{
-  padding: 5rem;
-}
-
 .text-description{
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .steps{
   margin-left: 34rem;
   font-size: 1rem;
   color: orange;
-  font-weight: bold;
-}
-
-.image-id{
-  margin-top: 0.2rem;
-  margin-left: 2.3rem;
-  font-weight: bold;
-}
-
-.image-selfie{
-  margin-top: 0.2rem;
-  margin-left: 16.6rem;
   font-weight: bold;
 }
 

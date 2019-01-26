@@ -11,9 +11,11 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateAccountComponent implements OnInit {
 
-  banks: any = [{}];
+  schemes: any = ["BBAN","IBAN"];
   account;
   message = "Please fill all fields"
+  accountCreated:boolean = false;
+  accountInfo = "";
 
   accountJson = {
     "accountClosingDate": "2019-01-20T12:21:50.659Z",
@@ -58,14 +60,6 @@ export class CreateAccountComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-
-    let httpObject = { method: "getBanks" };
-
-    this.http.post('https://57bojam407.execute-api.eu-central-1.amazonaws.com/prod/afindemo', httpObject).subscribe(data => {
-      this.banks = JSON.parse(JSON.stringify(data));
-      this.banks = this.banks.content;
-    }
-    );
   }
 
   marked = false;
@@ -82,7 +76,8 @@ export class CreateAccountComponent implements OnInit {
   }
 
   onOptionsSelected(event) {
-    this.accountJson.bankId = this.banks[event].bankId;
+    this.accountJson.schemeName = this.schemes[event];
+    console.log(this.accountJson);
   }
 
   getAccountvalues() {
@@ -115,7 +110,10 @@ export class CreateAccountComponent implements OnInit {
         console.log(data);
 
         if (data != null) {
-          this.message = "Account Successfully Created.\nYour Account number : " + this.account.accountIdentification;
+          this.message = "Account Successfully Created."
+          this.accountInfo = "Your Account Number : " + this.account.accountIdentification;
+          this.accountCreated = true;
+          
           console.log(data);
         } else {
           this.message = "Account Creation Failed";

@@ -32,6 +32,8 @@ export class ViewAccountComponent implements OnInit {
   getAccount() {
     console.log(this.accountNumber);
 
+    this.invalid = false;
+
     if (this.accountNumber == "") {
       this.invalid = true;
     }
@@ -44,6 +46,10 @@ export class ViewAccountComponent implements OnInit {
 
 
       this.http.post('https://57bojam407.execute-api.eu-central-1.amazonaws.com/prod/afindemo', jsonObj).subscribe(data => {
+
+        if (data == null) {
+          this.invalid = true;
+        }
 
         this.accountGot = JSON.parse(JSON.stringify(data));
         console.log(this.accountGot);

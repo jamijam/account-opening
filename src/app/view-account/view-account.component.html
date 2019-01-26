@@ -1,115 +1,141 @@
-<div class="container-fluid main-area">
-  <div class="card login-card">
-    <div class="card-body">
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="../../assets/apix.png" class="d-inline-block align-top nav-icon apix-logo" alt="">
+    <img src="../../assets/hv.png" class="d-inline-block align-top nav-icon hyperverge-logo" alt="">
+  </a>
+</nav>
 
+<div class="container-fluid canvas-bg">
+  <div class="container content-bg">
 
-      <div class="row">
-        <h1>Retrieve Details</h1>
-      </div>
+    <div class="page-heading">
 
-      <br>
+      <h1 class="title">WELCOME TO MODEL BANK</h1>
+      <h6 class="subheading">Thank you for choosing to create an account with us.</h6>
 
-      <div class="row">
-        <div class="col-md-4">
-          <span class="label">Account Number</span>
-        </div>
-        <div class="col-md-8">
-          <input type="text" class="text-field" [(ngModel)]="accountNumber" placeholder="Account Number">
-          <img src="../../assets/error.png" class="cancel" (click)="clear() ">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-8">
-          <span *ngIf="invalid" style="color:red">Invalid Account Number</span>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row">
-        <button class="input-button" (click)="getAccount()">
-          Create Account
-        </button>
-      </div>
-
-
-      <div *ngIf="accountAvailable" class="account-information">
-
-        <div class="row header-two">
-          <h1>Account Details</h1>
-        </div>
-
-        <br>
-
-        <div class="row field">
-          <div class="col-md-4">
-            <span class="label">Account Number</span>
-          </div>
-          <div class="col-md-8">
-            <span class="label">{{accountModel.accountNumber}}</span>
-          </div>
-        </div>
-
-        <div class="row field">
-          <div class="col-md-4">
-            <span class="label">Secondary Identification</span>
-          </div>
-          <div class="col-md-8">
-            <span class="label">{{accountModel.SecondaryIdentificaton}}</span>
-          </div>
-        </div>
-
-        <div class="row field">
-          <div class="col-md-4">
-            <span class="label">Account Name</span>
-          </div>
-          <div class="col-md-8">
-            <span class="label">{{accountModel.accountName}}</span>
-          </div>
-        </div>
-
-        <div class="row field">
-          <div class="col-md-4">
-            <span class="label">Scheme Name</span>
-          </div>
-          <div class="col-md-8">
-            <span class="label">{{accountModel.schemeName}}</span>
-          </div>
-        </div>
-
-        <div class="row field">
-          <div class="col-md-4">
-            <span class="label">Bank Name</span>
-          </div>
-          <div class="col-md-8">
-            <span class="label">{{accountModel.bankName}}</span>
-          </div>
-        </div>
-
-        <div class="row field">
-          <div class="col-md-4">
-            <span class="label">Branch Address</span>
-          </div>
-          <div class="col-md-8">
-            <span class="label">{{accountModel.branchAddress}}</span>
-          </div>
-        </div>
-
-        <div class="row field">
-          <div class="col-md-4">
-            <span class="label">NickName</span>
-          </div>
-          <div class="col-md-8">
-            <span class="label">{{accountModel.nickName}}</span>
-          </div>
-        </div>
-
-      </div>
-
+      <hr>
 
     </div>
+
+    <div class="row steps-custom">
+
+      <div class="text-center progress-circle-active">
+        <span class="span-number">01</span>
+      </div>
+
+      <div class="div progress-tracker-active"></div>
+
+      <div class="text-center progress-circle-active">
+        <span class="span-number">02</span>
+      </div>
+
+      <div class="div progress-tracker-active"></div>
+
+
+      <div class="text-center progress-circle-active">
+        <span class="span-number">03</span>
+      </div>
+
+    </div>
+
+    <div class="title">
+      <!--Step Action-->
+      <h3 class="text-description">Retrieve Account Information</h3>
+      <h6>Please fill the form below</h6>
+    </div>
+
+
+    <div class="form">
+      <span class="label">Account Number</span>
+      <img src="../../assets/error.png" class="cancel" (click)="clear() ">
+
+      <input type="text" class="text-field form-field" [(ngModel)]="accountNumber" placeholder="Account Number">
+
+      <button class="input-button" (click)="getAccount()">
+        View Account
+      </button>
+
+      <span *ngIf="invalid" style="color:red; margin-left: 3rem;">Invalid Account Number</span>
+
+    </div>
+
+    <div *ngIf="accountGot" class="account-information">
+
+      <br>
+      <hr>
+
+      <div class="title">
+        <!--Step Action-->
+        <h3 class="text-description">Account Details</h3>
+      </div>
+
+      <br>
+
+      <div class="row field">
+        <div class="col-md-4">
+          <span class="label label-title">Account Number</span>
+        </div>
+        <div class="col-md-8">
+          <span class="label">{{accountModel.accountNumber}}</span>
+        </div>
+      </div>
+
+      <div class="row field">
+        <div class="col-md-4">
+          <span class="label label-title">Secondary Identification</span>
+        </div>
+        <div class="col-md-8">
+          <span class="label">{{accountModel.SecondaryIdentificaton}}</span>
+        </div>
+      </div>
+
+      <div class="row field">
+        <div class="col-md-4">
+          <span class="label label-title">Account Name</span>
+        </div>
+        <div class="col-md-8">
+          <span class="label">{{accountModel.accountName}}</span>
+        </div>
+      </div>
+
+      <div class="row field">
+        <div class="col-md-4">
+          <span class="label label-title">Scheme Name</span>
+        </div>
+        <div class="col-md-8">
+          <span class="label">{{accountModel.schemeName}}</span>
+        </div>
+      </div>
+
+      <div class="row field">
+        <div class="col-md-4">
+          <span class="label label-title">Bank Name</span>
+        </div>
+        <div class="col-md-8">
+          <span class="label">{{accountModel.bankName}}</span>
+        </div>
+      </div>
+
+      <div class="row field">
+        <div class="col-md-4">
+          <span class="label label-title">Branch Address</span>
+        </div>
+        <div class="col-md-8">
+          <span class="label">{{accountModel.branchAddress}}</span>
+        </div>
+      </div>
+
+      <div class="row field">
+        <div class="col-md-4">
+          <span class="label label-title">NickName</span>
+        </div>
+        <div class="col-md-8">
+          <span class="label">{{accountModel.nickName}}</span>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
