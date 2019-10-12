@@ -3,11 +3,11 @@ export class AccountJson {
     accountCurrency: string;
     accountName: string;
     accountOpeningDate: string;
-    accountTypeId: string;
+    accountTypeId: number;
     accountrefnumber: string;
     balance: number;
-    bankId: string;
-    branchId: string;
+    bankId: number;
+    branchId: number;
     cardFacility: string;
     checkerDate: string;
     checkerId: string;
@@ -31,7 +31,7 @@ export class AccountJson {
     nomineePhoneNo: string;
     nomineeRelatonship: string;
     passbookFacility: string;
-    productId: string;
+    productId: number;
     schemeName: string;
     status: string;
     typeOfBalance: string;

@@ -41,10 +41,10 @@
       <div class="field">
 
         <span class="label">Account Name</span>
-        <input class="text-field form-field" [(ngModel)]="accountJson.accountName" type="text" placeholder="Account Name" />
+        <input class="text-field form-field" [(ngModel)]="accountName" type="text" placeholder="Account Name" />
 
         <span class="label">NickName</span>
-        <input class="text-field form-field" [(ngModel)]="accountJson.nickname" type="text" placeholder="NickName" />
+        <input class="text-field form-field" [(ngModel)]="nickname" type="text" placeholder="NickName" />
 
         <span class="label">Select Account Scheme</span>
         <select class="text-field form-field" (change)='onOptionsSelected($event.target.value)'>
@@ -65,41 +65,34 @@
           </label>
 
           <div class="submit text-right">
-            <button class="input-button" (click)="getAccountvalues($event)" data-toggle="modal" data-target="#exampleModal">
+            <button [disabled]="checkDisabled()" class="input-button" (click)="getAccountValues($event)" data-toggle="modal"
+              data-target="#exampleModal">
               Create Account
             </button>
-
-            &nbsp; &nbsp; &nbsp;
-
-            <button class="input-button" (click)="gotoView()" [disabled]="!accountCreated" [ngClass]="{'disable-custom' : !accountCreated}">
-              View Account
-            </button>
           </div>
         </div>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Account Creation Status</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                {{message}}<br>
-                <span class="account-Info">{{accountInfo}}</span>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
       </div>
     </div>
+  </div>
+</div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Account Creation Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{message}}<br>
+        <span class="account-Info">{{accountInfo}}</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

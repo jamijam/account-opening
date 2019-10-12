@@ -93,6 +93,11 @@
   transition: 0.3s ease-in-out;
 }
 
+.input-button:disabled{
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .row{
   margin: 0;
   padding: 0;  

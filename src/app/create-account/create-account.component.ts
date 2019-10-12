@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 
-import { AccountJson } from 'src/app/_models/account-json';
+import { SmartBankService } from "../_services/smart-bank/smart-bank.service";
 
 @Component({
   selector: 'app-create-account',
@@ -19,117 +16,79 @@ export class CreateAccountComponent implements OnInit {
   accountCreated = false;
   accountInfo = '';
 
-  accountJson: AccountJson = {
-    accountClosingDate: '2019-01-20T12:21:50.659Z',
-    accountCurrency: 'USD',
-    accountName: '',
-    accountOpeningDate: '2019-01-20T12:21:50.659Z',
-    accountTypeId: '1001',
-    accountrefnumber: 'string',
-    balance: 0,
-    bankId: '1001',
-    branchId: '1000001',
-    cardFacility: 'Y',
-    checkerDate: '2019-01-20T12:21:50.659Z',
-    checkerId: 'string',
-    chequebookFacility: 'Y',
-    creditDebitIndicator: 'Credit',
-    creditLineAmount: 0,
-    creditLineIncluded: 'N',
-    creditLineType: 'Emergency',
-    frozen: 'Y',
-    isjointaccount: 'N',
-    isonlineaccessenabled: 'Y',
-    makerDate: '2019-01-20T12:21:50.659Z',
-    makerId: 'string',
-    modifiedDate: '2019-01-20T12:21:50.659Z',
-    nickname: '',
-    noCredit: 'Y',
-    noDebit: 'N',
-    nomineeAddress: 'string',
-    nomineeDob: '2019-01-20T12:21:50.659Z',
-    nomineeName: 'string',
-    nomineePhoneNo: 'string',
-    nomineeRelatonship: 'string',
-    passbookFacility: 'Y',
-    productId: '1001',
-    schemeName: 'IBAN',
-    status: 'string',
-    typeOfBalance: 'ClosingAvailable',
-    usage: 'Y'
-  };
+  accountCardFacility: string = 'N';
+  schemeName: string;
+  accountName: string;
+  nickname: string;
 
   marked = false;
+  APIXToken: string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private smartBankService: SmartBankService, private router: Router) { }
 
   ngOnInit() {
+    this.smartBankService.getAPIXToken().subscribe(data => {
+      this.APIXToken = data.access_token;
+    })
   }
 
   cardFacility(event) {
     this.marked = event.target.checked;
 
     if (this.marked === true) {
-      this.accountJson.cardFacility = 'Y';
+      this.accountCardFacility = 'Y';
     } else {
-      this.accountJson.cardFacility = 'N';
+      this.accountCardFacility = 'N';
     }
   }
 
   onOptionsSelected(event) {
-    this.accountJson.schemeName = this.schemes[event];
-    console.log(this.accountJson);
+    this.schemeName = this.schemes[event];
+    console.log(this.schemeName);
   }
 
-  getAccountvalues() {
+  getAccountValues() {
+    this.message = 'Creating...';
 
-    let boo = true;
+    this.smartBankService.createAccount(
+      this.APIXToken,
+      this.accountName,
+      this.nickname,
+      this.schemeName,
+      this.accountCardFacility
+    ).subscribe(accountData => {
+      this.account = JSON.parse(JSON.stringify(accountData));
+      console.log(accountData);
 
-    if (this.accountJson.accountName === '') {
-      console.log('Account name cannot be empty');
-      boo = false;
-    }
+      if (accountData != null) {
+        this.smartBankService.createParty(this.APIXToken, this.accountName).subscribe(partyData => {
+          let partyId = partyData.partyId;
+          let accountId = accountData.accountId;
+  
+          this.smartBankService.setOwner(this.APIXToken, accountId, partyId).subscribe(response => {
+            this.message = 'Account Successfully Created.';
+            this.accountInfo = 'Your Account Number : ' + this.account.accountIdentification;
+            this.accountCreated = true;
 
-    if (this.accountJson.nickname === '') {
-      console.log('Nickname cannot be empty');
-      boo = false;
-    }
+            let bankDetails = response.bank;
+            let partyDetails = response.party;
+            
+          });
+        });
 
-    if (this.accountJson.bankId === '0') {
-      console.log('Bank not selected');
-      boo = false;
-    }
-
-    if (boo === true) {
-
-      this.message = 'Creating...';
-
-      const httpObject = { method: 'createAccount', account: this.accountJson };
-      this.http.post('https://57bojam407.execute-api.eu-central-1.amazonaws.com/prod/afindemo', httpObject).subscribe(data => {
-
-        this.account = JSON.parse(JSON.stringify(data));
-        console.log(data);
-
-        if (data != null) {
-          this.message = 'Account Successfully Created.';
-          this.accountInfo = 'Your Account Number : ' + this.account.accountIdentification;
-          this.accountCreated = true;
-
-          console.log(data);
-        } else {
-          this.message = 'Account Creation Failed';
-        }
+        console.log(accountData);
+      } else {
+        this.message = 'Account Creation Failed';
       }
-      );
-    }
+    });
   }
 
-  gotoView() {
-
-    this.router.navigateByUrl('/viewaccount');
-
+  checkDisabled(): boolean {
+    if (this.accountName && this.accountCardFacility && this.schemeName && this.nickname) {
+      return false;
+    };
+    return true;
   }
-
 
 }
 
