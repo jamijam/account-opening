@@ -12,8 +12,8 @@ import { FaceMatchService } from '../_services/face-match.service';
 })
 export class LoginComponent implements OnInit {
 
-  image1;
-  image2;
+  image1: any;
+  image2: any;
 
   APIXToken: string;
 
@@ -46,10 +46,7 @@ export class LoginComponent implements OnInit {
           this.verified = true;
           this.confidence = receivedObject.result.conf;
           this.loadImage(this.image1, "image1");
-          this.loadImage(this.image2, "image2");          
-          // setTimeout(() => {
-          //   this.router.navigateByUrl('/createaccount');
-          // }, 3000);
+          this.loadImage(this.image2, "image2");
         }
       });
   }
@@ -65,6 +62,11 @@ export class LoginComponent implements OnInit {
     };
 
     reader.readAsDataURL(image);
+  }
+
+  cancel() {
+    this.verified = false;
+    this.image1 = this.image2 = this.confidence = undefined;
   }
 
 }
