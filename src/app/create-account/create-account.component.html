@@ -22,13 +22,6 @@
         <span class="span-number">02</span>
       </div>
 
-      <div class="div progress-tracker"></div>
-
-
-      <div class="text-center progress-circle">
-        <span class="span-number">03</span>
-      </div>
-
     </div>
 
     <div class="title">
@@ -87,8 +80,9 @@
         </button>
       </div>
       <div class="modal-body">
-        {{message}}<br>
-        <span class="account-Info">{{accountInfo}}</span>
+        {{message}}<br><br>
+        <span class="account-Info" [innerHTML]="accountInfo"></span><br><br>
+        {{message2}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
