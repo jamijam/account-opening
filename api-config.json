@@ -1,0 +1,14 @@
+{
+    "facematch": {
+        "apixCredentials": {
+            "userName": "Replace this with your APIX username",
+            "password": "Replace this with your APIX password"
+        },
+        "apiCredentials": {
+            "appId": "2d9288",
+            "appKey": "506505f70970ce16988f"
+        },
+        "apixTokenUrl": "https://services.apixplatform.com/api-sandbox/application/token",
+        "verifyUrl": "https://api.apixplatform.com/facematch/1.0/v1/photo/verifyPair"
+    }
+}

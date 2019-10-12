@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import * as hardcoded from 'src/assets/hardcoded/hardcoded-dev.json';
+import * as hardcoded from 'api-config.json';
 import { Observable } from 'rxjs';
 
 @Injectable({
