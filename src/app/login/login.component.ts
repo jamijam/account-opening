@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { hypervergeResponse } from '../_models/hypervergeResponse';
 
-import { FaceMatchService } from '../_services/face-match.service';
+import { FaceMatchService } from '../_services/face-match/face-match.service';
 
 @Component({
   selector: 'app-login',
