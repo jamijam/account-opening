@@ -10,13 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './_components/header/header.component';
+import { ViewDetailsComponent } from './view-details/view-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CreateAccountComponent,
-    HeaderComponent
+    HeaderComponent,
+    ViewDetailsComponent
   ],
   imports: [
     BrowserModule,

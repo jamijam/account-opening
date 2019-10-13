@@ -13,8 +13,6 @@ export class CreateAccountComponent implements OnInit {
   schemes: any = ['BBAN', 'IBAN'];
   account;
   message = 'Please fill all fields';
-  message2;
-  accountCreated = false;
   accountInfo = '';
 
   accountCardFacility: string = 'N';
@@ -68,14 +66,22 @@ export class CreateAccountComponent implements OnInit {
           this.smartBankService.setOwner(this.APIXToken, accountId, partyId).subscribe(response => {
             let partyDetails = response.party;
 
+            let accountDetails = {
+              accountIdentification: this.account.accountIdentification,
+              partyId: partyDetails.partyId,
+              accountName: accountData.accountName,
+              nickname: accountData.nickname,
+              schemeName: accountData.schemeName,
+              secondaryIdentification: accountData.secondaryIdentification
+            }
+
+            localStorage.setItem('accountDetails', JSON.stringify(accountDetails));
+
             this.message = 'Your account has been successfully created.';
-            this.message2 = 'A mail from Model Bank has been sent to verify your identity and provide further information.'
-            this.accountInfo = 'Account Number : ' + this.account.accountIdentification + '<br>'
-                              + 'Personal ID: ' + partyDetails.partyId + '<br>'
-                              + 'Account Name: ' + accountData.accountName + ' | ' + accountData.nickname + ' (nickname)<br>'
-                              + 'Account Scheme: ' + accountData.schemeName + '<br>'
-                              + 'Secondary Identification: ' + accountData.secondaryIdentification;
-            this.accountCreated = true;            
+
+            document.getElementById('closeBtn').click();
+
+            this.router.navigate(['/viewdetails']);
           });
         });
 
