@@ -39,11 +39,11 @@
     <div class="form">
       <div class="field">
 
-        <span class="label">Account Name</span>
-        <input class="text-field form-field" [(ngModel)]="accountName" type="text" placeholder="Account Name" />
+        <span class="label">Account Holder's Name</span>
+        <input class="text-field form-field" [(ngModel)]="accountName" type="text" placeholder="Name" />
 
-        <span class="label">NickName</span>
-        <input class="text-field form-field" [(ngModel)]="nickname" type="text" placeholder="NickName" />
+        <span class="label">Nick Name</span>
+        <input class="text-field form-field" [(ngModel)]="nickname" type="text" placeholder="Nick Name" />
 
         <span class="label">Select Account Scheme</span>
         <select class="text-field form-field" (change)='onOptionsSelected($event.target.value)'>

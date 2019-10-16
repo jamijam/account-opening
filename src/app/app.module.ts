@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { IDVerificationComponent } from './id-verification/id-verification.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './_components/header/header.component';
@@ -15,7 +15,7 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    IDVerificationComponent,
     CreateAccountComponent,
     HeaderComponent,
     ViewDetailsComponent

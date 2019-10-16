@@ -6,11 +6,11 @@ import { hypervergeResponse } from '../_models/hypervergeResponse';
 import { FaceMatchService } from '../_services/face-match/face-match.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-id-verification',
+  templateUrl: './id-verification.component.html',
+  styleUrls: ['./id-verification.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class IDVerificationComponent implements OnInit {
 
   image1: any;
   image2: any;
