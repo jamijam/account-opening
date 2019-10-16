@@ -27,17 +27,28 @@ Please note that `URL` should be unique and `Password` must be atleast 8 charact
 7. Already created IDE instances will appear in `IDE Instance Manager` view. Click on the IDE instance name to re-open the IDE instance
 8. Please note that IDE instance will be available for 24 hours. Data should be backed up by pushing code to GitHub before auto termination. One hour before the termination, you can request for an termination extension.
 
-## Running the use case
+## Setting up the development server
 
 1. Open and login to IDE instance
 2. From the main menu, click `View` > `Terminal`.
 
 Execute following commands in Terminal window.
 
-1.  `git clone https://github.com/apixplatform/account-opening.git`
-2.  `cd account-opening/`
-3.  `npm install`
-4.  `npm start`
+1.  Download the code into IDE instance
+
+        git clone https://github.com/apixplatform/account-opening.git
+
+2.  Use case code is downloaded to IDE instance to the folder `account-opening`. Let's change the terminal directory to `account-opening` folder.
+
+        cd account-opening/
+
+3.  Download Angular dependancies with below commands.
+
+        npm install
+
+4.  Start the Angular application server.
+
+        npm start
 
 To configure the use case,
 
@@ -56,7 +67,7 @@ Now the development server is up and running with correct configurations. To ope
 
 ## Testing the use case
 
-1. In the GitHub project go to `test-images` and download `id.jpg` and `selfie.jpg`. Provide these two images in the 1st step and click `Verify` button. 
+1. In the GitHub project go to `test-images` and download `id.jpg` and `selfie.jpg`. Provide these two images in the 1st step of application window and click `Verify` button. 
 
     * HyperVerge Face Match API will get executed to validate the provided identity document and selfie. 
     * Match confidence level will be provided as the output. 

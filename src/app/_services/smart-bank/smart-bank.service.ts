@@ -47,7 +47,7 @@ export class SmartBankService {
 
     const request: AccountJson = {
       "accountClosingDate": "2019-10-12T11:38:01.711Z",
-      "accountCurrency": "GBP",
+      "accountCurrency": "USD",
       "accountName": name,
       "accountOpeningDate": "2019-10-12T11:38:01.711Z",
       "accountTypeId": hardcoded.smartbank.accountTypeId,
