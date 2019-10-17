@@ -2,6 +2,8 @@
 
 This use case demonstrates the account openning process with ID verification.
 
+This use case is built with Angular 8. To go through the use case, you don't need to know Angular. But if you are interested in leaning Angular, please follow [this](https://www.bitovi.com/academy/learn-angular.html) tutorial.
+
 ## APIs used to implement the use case
 
 1. HyperVerge Face Match ([Link](https://apixplatform.com/profile/api-detail?api-id=30))
