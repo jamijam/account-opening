@@ -5,8 +5,8 @@
             "password": "Replace this with your APIX password"
         },
         "apiCredentials": {
-            "appId": "2d9288",
-            "appKey": "506505f70970ce16988f"
+            "appId": "Replace this with Hyperverge appId",
+            "appKey": "Replace this with Hyperverge appKey"
         },
         "apixTokenUrl": "https://services.apixplatform.com/api-sandbox/application/token",
         "verifyUrl": "https://api.apixplatform.com/facematch/1.0/v1/photo/verifyPair"
